@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:weather_app/model/weather_data.dart';
 
 class MainCard extends StatelessWidget {
+  final WeatherData weatherData;
+
   const MainCard({
+    required this.weatherData,
     super.key,
   });
 
@@ -10,16 +14,26 @@ class MainCard extends StatelessWidget {
     return Card(
       elevation: 50,
       shadowColor: Colors.black,
-      color: Colors.blue,
+      color: Colors.grey,
       child: Container(
         height: 250,
         width: 400,
-        child: const Column(
-          // mainAxisSize: MainAxisSize.min,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
+            const Text(
+              'Temperature',
+              style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+            ),
             Text(
-              "Let's Talk About Love",
-              style: TextStyle(fontSize: 20),
+              '${weatherData.temperature}°C',
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+            ),
+            Image.network(
+              fit: BoxFit.fitWidth,
+              weatherData.iconUrl,
+              width: 112.4,
+              height: 132.3,
             ),
           ],
         ),
@@ -29,7 +43,11 @@ class MainCard extends StatelessWidget {
 }
 
 class SmallCards extends StatelessWidget {
-  // const SmallCards({super.key});
+  final WeatherData weatherData;
+  const SmallCards({
+    super.key,
+    required this.weatherData,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -39,37 +57,50 @@ class SmallCards extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         children: [
           cardsm(
-            'hello',
+            'Location',
+            ' ${weatherData.location}',
+            Icons.location_on,
           ),
           cardsm(
-            'lkjjjjjjkl',
-          ),  cardsm(
-            'hello',
-          ),  cardsm(
-            'hello',
+            'Wind Speed',
+            ' ${weatherData.windSpeed}',
+            Icons.wind_power_outlined,
           ),
-      
+          cardsm(
+            'Country',
+            ' ${weatherData.country}',
+            Icons.location_city_outlined,
+          ),
         ],
       ),
     );
   }
 
   Card cardsm(
-    String txt,
+    String title,
+    String subtitle,
+    IconData _icon,
   ) {
     return Card(
       elevation: 50,
       shadowColor: Colors.black,
       color: Colors.grey,
       child: Container(
-        // height: 50,
-        width: 200,
+        width: 160,
         child: Column(
-          // mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <Widget>[
+            Icon(
+              _icon,
+              size: 50,
+            ),
             Text(
-              txt,
-              style: TextStyle(fontSize: 20),
+              title,
+              style: TextStyle(fontSize: 22),
+            ),
+            Text(
+              subtitle,
+              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
           ],
         ),
