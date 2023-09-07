@@ -2,7 +2,14 @@
 
 
 
-https://github.com/gopikarp/weather-ui/assets/100861026/921da3de-057c-4e8f-98ec-dea7cd23c822
+
+https://github.com/gopikarp/weather_app_project/assets/100861026/3c8f9a1a-c097-4f94-91e9-4918f6fdffae
+
+
+
+
+
+
 
 
 
